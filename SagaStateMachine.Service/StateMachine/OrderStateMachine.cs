@@ -62,7 +62,7 @@ namespace SagaStateMachine.Service.StateMachine
                     context.Instance.CreatedDate = DateTime.UtcNow;
                 })
                 .TransitionTo(OrderCreated)
-                .Send(new Uri($"{RabbitMQSettings.Stock_OrderCreatedEventQueue}"),
+                .Send(new Uri($"queue:{RabbitMQSettings.Stock_OrderCreatedEventQueue}"),
                     context => new OrderCreatedEvent(context.Instance.CorrelationId)
                     { 
                         OrderItems = context.Data.OrderItems
