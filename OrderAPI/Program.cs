@@ -47,7 +47,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.MapPost("/create-order",async (CreateOrderVM model, OrderDBContext context, SendEndpointProvider sendEndpointProvider) =>
+app.MapPost("/create-order",async (CreateOrderVM model, OrderDBContext context, ISendEndpointProvider sendEndpointProvider) =>
 {
     Order order = new()
     {
@@ -59,7 +59,7 @@ app.MapPost("/create-order",async (CreateOrderVM model, OrderDBContext context, 
         {
             ProductId = oi.ProductId,
             Count = oi.Count,
-            Price = oi.Price,
+            Price = oi.Price
         }).ToList(),
     };
     
@@ -75,7 +75,7 @@ app.MapPost("/create-order",async (CreateOrderVM model, OrderDBContext context, 
         {
             ProductId = oi.ProductId,
             Count = oi.Count,
-            Price = oi.Price,
+            Price = oi.Price
         }).ToList()
     };
 
