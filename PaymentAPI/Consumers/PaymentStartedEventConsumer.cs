@@ -23,6 +23,7 @@ namespace PaymentAPI.Consumers
                 { 
                 
                 };
+                sendEndPoint.Send(paymentCompletedEvent);
             }
             else
             {
@@ -31,7 +32,8 @@ namespace PaymentAPI.Consumers
                     Message = "Yetersiz Bakiye...",
                     OrderItems = context.Message.OrderItems
                 };
-            }
+                sendEndPoint.Send(paymentFailedEvent);
+            }           
         }
     }
 }
