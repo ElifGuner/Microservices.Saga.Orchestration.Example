@@ -1,9 +1,9 @@
 ---------------------------------------------------------------------
-					Saga Orchestration Pattern
+		Saga Orchestration Pattern
 					
-							Elif Güner
+			Elif Güner
 							
-							28.02.2024
+		       28.02.2024
 ---------------------------------------------------------------------					
 
 Saga Orchestration Pattern is implemented in this project.
@@ -96,11 +96,11 @@ Entity Framework Core is used for MSSQL DB operations.
     If Payment Processes are failed, than paymentFailedEvent is created and published.
 
 11. When the OrderStateInstance is in StockReserved state, if the PaymentCompletedEvent is received by the State Machine,
-   state is changed to PaymentCompleted. OrderCompletedEvent is generated and sent to the queue "order-order-completed-event-queue".
+    state is changed to PaymentCompleted. OrderCompletedEvent is generated and sent to the queue "order-order-completed-event-queue".
    
-   When the OrderStateInstance is in StockReserved state, if the PaymentFailedEvent is received by the State Machine,
-   state is changed to PaymentFailed. OrderFailedEvent is generated and sent to the queue "order-order-failed-event-queue".
-   StockRollbackMessage is generated and sent to the queue "stock-rollback-message-queue"
+    When the OrderStateInstance is in StockReserved state, if the PaymentFailedEvent is received by the State Machine,
+    state is changed to PaymentFailed. OrderFailedEvent is generated and sent to the queue "order-order-failed-event-queue".
+    StockRollbackMessage is generated and sent to the queue "stock-rollback-message-queue"
 
 12. If the transaction is successful, then, OrderStateInstance is deleted from the DB.
-	If the transaction is fails, then, OrderStateInstance is not deleted from the DB for tracking purposes.
+    If the transaction is fails, then, OrderStateInstance is not deleted from the DB for tracking purposes.
